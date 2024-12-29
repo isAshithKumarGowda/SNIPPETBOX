@@ -34,6 +34,7 @@ func newTemplateCache(dir string) (map[string]*template.Template, error) {
 		}
 
 		cache[name] = ts
+		//testing
 	}
 	return cache, nil
 }
