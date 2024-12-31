@@ -1,8 +1,8 @@
 package main
 
 import (
+	"html/template"
 	"path/filepath"
-	"text/template"
 
 	"github.com/isAshithKumarGowda/snippetbox/pkg/models"
 )
@@ -29,6 +29,11 @@ func newTemplateCache(dir string) (map[string]*template.Template, error) {
 		}
 
 		ts, err = ts.ParseGlob(filepath.Join(dir, "*layout.tmpl"))
+		if err != nil {
+			return nil, err
+		}
+
+		ts, err = ts.ParseGlob(filepath.Join(dir, "*.partial.tmpl"))
 		if err != nil {
 			return nil, err
 		}
